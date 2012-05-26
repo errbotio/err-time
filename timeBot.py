@@ -1,6 +1,7 @@
 from botplugin import BotPlugin
 from jabberbot import botcmd
 import pytz
+import datetime
 
 tzs =  pytz.all_timezones_set
 fmt = '%Y-%m-%d %H:%M:%S %Z%z'
