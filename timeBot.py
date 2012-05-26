@@ -1,13 +1,14 @@
 from botplugin import BotPlugin
 from jabberbot import botcmd
-import pytz
-import datetime
+import datetime, pytz
+import re
 
 tzs =  pytz.all_timezones_set
 fmt = '%Y-%m-%d %H:%M:%S %Z%z'
 
 def find_tz(city):
     for x in pytz.all_timezones_set:
+        print x
         if city in x:
             return x
     return None
@@ -34,7 +35,8 @@ class TimeBot(BotPlugin):
         """
         if not args:
             return 'Am I supposed to guess the location?...'
-        city = args.strip().capitalize()
+        city = '_'.join([word.capitalize() for word in args.strip().split(' ')])
+        print city
         tz_name = find_tz(city)
         if not tz_name:
             return 'Sorry cannot find this city, you can list them with !tzlist'
@@ -48,7 +50,7 @@ class TimeBot(BotPlugin):
         """
         country_timezones = get_all_tznames()
         answer = ''
-        for country in country_timezones:
+        for country in sorted(country_timezones):
             answer+=country + ':\n'
             for city in sorted(country_timezones[country]):
                 answer+='\t' + city + '\n'
