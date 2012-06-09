@@ -1,5 +1,5 @@
-from botplugin import BotPlugin
-from jabberbot import botcmd
+from errbot.botplugin import BotPlugin
+from errbot.jabberbot import botcmd
 import datetime, pytz
 import re
 
