@@ -27,14 +27,14 @@ def get_all_tznames():
     return country_timezones
 
 class TimeBot(BotPlugin):
-    @botcmd
+    @botcmd(split_args_with = ' ')
     def time(self, mess, args):
         """ Shows the current time for given city.
         Example: !time San Francisco
         """
         if not args:
             return 'Am I supposed to guess the location?...'
-        city = '_'.join([word.capitalize() for word in args.strip().split(' ')])
+        city = '_'.join([word.capitalize() for word in args])
         tz_name = find_tz(city)
         if not tz_name:
             return 'Sorry cannot find this city, you can list them with !tzlist'
