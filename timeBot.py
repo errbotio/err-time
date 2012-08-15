@@ -1,7 +1,14 @@
-from errbot.botplugin import BotPlugin
-from errbot.jabberbot import botcmd
 import datetime, pytz
 import re
+
+# Backward compatibility
+from errbot.version import VERSION
+from errbot.utils import version2array
+if version2array(VERSION) >= [1,6,0]:
+    from errbot import botcmd, BotPlugin
+else:
+    from errbot.botplugin import BotPlugin
+    from errbot.jabberbot import botcmd
 
 tzs =  pytz.all_timezones_set
 fmt = '%Y-%m-%d %H:%M:%S %Z%z'
