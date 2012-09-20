@@ -41,8 +41,11 @@ class TimeBot(BotPlugin):
         """
         if not args:
             return 'Am I supposed to guess the location?...'
-        city = '_'.join([word.capitalize() for word in args])
-        tz_name = find_tz(city)
+        if args == 'UTC':
+            tz_name = 'UTC'
+        else:
+            city = '_'.join([word.capitalize() for word in args])
+            tz_name = find_tz(city)
         if not tz_name:
             return 'Sorry cannot find this city, you can list them with !tzlist'
         tz = pytz.timezone(tz_name)
