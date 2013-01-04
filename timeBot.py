@@ -41,7 +41,7 @@ class TimeBot(BotPlugin):
         """
         if not args:
             return 'Am I supposed to guess the location?...'
-        if args[0].lower() == 'utc':
+        if len(args) == 1 and args[0].lower() == 'utc':
             tz_name = 'UTC'
         else:
             city = '_'.join([word.capitalize() for word in args])
