@@ -21,7 +21,7 @@ def find_tz(city):
 
 def get_all_tznames():
     country_timezones = {}
-    for (country, tzlist) in pytz.country_timezones.iteritems():
+    for (country, tzlist) in pytz.country_timezones.items():
         country_name = pytz.country_names[country]
         cities = []
         for timezone in tzlist:
@@ -41,7 +41,7 @@ class TimeBot(BotPlugin):
         """
         if not args:
             return 'Am I supposed to guess the location?...'
-        if unicode.lower(args[0]) == 'utc':
+        if len(args) == 1 and args[0].lower() == 'utc':
             tz_name = 'UTC'
         else:
             city = '_'.join([word.capitalize() for word in args])
