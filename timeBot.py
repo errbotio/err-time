@@ -2,8 +2,10 @@ import datetime, pytz
 import re
 
 # Backward compatibility
+def version2array(version):
+    return list(map(int,version.split('.',2)))
+
 from errbot.version import VERSION
-from errbot.utils import version2array
 if version2array(VERSION) >= [1,6,0]:
     from errbot import botcmd, BotPlugin
 else:
