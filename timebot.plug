@@ -6,4 +6,4 @@ Module = timeBot
 Description = what time is it ?
 
 [Python]
-Version = 2+
+Version = 3
